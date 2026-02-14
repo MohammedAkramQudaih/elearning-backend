@@ -1,4 +1,4 @@
-<a href="https://github.com/MohammedAkramQudaih/elearning"> <h1 align="center">elearning</h1></a>
+<a href="https://github.com/MohammedAkramQudaih/elearning-backend"> <h1 align="center">elearning</h1></a>
 
 ## About
 
@@ -11,7 +11,7 @@
 Here is how you can run the project locally:
 1. Clone this repo
     ```sh
-    git clone https://github.com/MohammedAkramQudaih/elearning.git
+    git clone https://github.com/MohammedAkramQudaih/elearning-backend.git
     ```
 
 1. Go into the project root directory
