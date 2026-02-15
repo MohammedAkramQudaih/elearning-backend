@@ -55,7 +55,8 @@ class CareerController extends Controller
             return response()->json([
                 'success' => true,
                 'data' => [
-                    'id' => $submission->id
+                    // 'id' => $submission->id,
+                    'submission' => $submission
                 ],
                 'message' => 'Application submitted successfully'
             ], 201);
