@@ -56,7 +56,7 @@ Here is how you can run the project locally:
     this command will create users (CEO, Team Leader Of HR Team, Project Manager, Team Leader and Employee):
 
     Admin
-     > email: admin@admin.com , password: 12345678
+     > email: admin@example.com , password: password
 
 1. Run server 
    
