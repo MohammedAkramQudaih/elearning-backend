@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AcademicLevelResource;
 use App\Http\Resources\NewsResource;
 use App\Http\Resources\TestimonialResource;
+use App\Models\AcademicLevel;
 use App\Models\News;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -24,11 +26,16 @@ class HomeController extends Controller
             ->limit(6)
             ->get();
 
+        $academicLevel = AcademicLevel::where('status', true)
+            ->latest()
+            ->limit(6)
+            ->get();
         return response()->json([
             'success' => true,
             'data' => [
                 'news' => NewsResource::collection($latestNews),
                 'testimonials' => TestimonialResource::collection($testimonials),
+                'academicLevel' => AcademicLevelResource::collection($academicLevel),
                 'hero' => [
                     'title' => [
                         'en' => 'Welcome to E-Learning Platform',
@@ -61,16 +68,30 @@ class HomeController extends Controller
             'message' => 'News retrieved successfully'
         ]);
     }
+    public function academicLevel()
+    {
+        $academicLevel = AcademicLevel::where('status', true)
+            ->latest()
+            ->paginate(10);
+
+        return response()->json([
+            'success' => true,
+            'data' => AcademicLevelResource::collection($academicLevel),
+            'message' => 'Academic Levels retrieved successfully'
+        ]);
+    }
+
     public function testimonials()
     {
         $testimonials = Testimonial::where('status', true)
             ->latest()
             ->paginate(10);
-        
+
         return response()->json([
             'success' => true,
             'data' => TestimonialResource::collection($testimonials),
             'message' => 'Testimonials retrieved successfully'
         ]);
     }
+
 }

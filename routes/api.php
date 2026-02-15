@@ -19,6 +19,7 @@ Route::prefix('v1')->group(function () {
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/news', [HomeController::class, 'news']);
     Route::get('/testimonials', [HomeController::class, 'testimonials']);
+    Route::get('/academic-level', [HomeController::class, 'academicLevel']);
     
     // Career submission
     Route::post('/career/apply', [CareerController::class, 'apply']);
