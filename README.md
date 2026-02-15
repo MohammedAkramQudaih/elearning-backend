@@ -1,4 +1,4 @@
-<a href="https://github.com/MohammedAkramQudaih/elearning-backend"> <h1 align="center">elearning</h1></a>
+<a href="https://github.com/MohammedAkramQudaih/elearning-backend"> <h1 align="center">E-Learning</h1></a>
 
 ## About
 
@@ -53,7 +53,10 @@ Here is how you can run the project locally:
     php artisan storage:link
     ```
 
+    this command will create users (CEO, Team Leader Of HR Team, Project Manager, Team Leader and Employee):
 
+    Admin
+     > email: admin@admin.com , password: 12345678
 
 1. Run server 
    
