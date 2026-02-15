@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             MajorSeeder::class,
             TestimonialSeeder::class,
             NewsSeeder::class,
-            
+            StudentSeeder::class,
+
         ]);
     }
 }
