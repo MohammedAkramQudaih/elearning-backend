@@ -73,8 +73,22 @@
                                 required>
                             <option value="">Select Academic Level</option>
                             @foreach($academicLevels as $level)
+                                @php
+                                    // تحويل اسم المستوى من JSON إلى array إذا كان string
+                                    $levelNameEn = '';
+                                    $levelNameAr = '';
+                                    
+                                    if ($level->name) {
+                                        $levelData = is_string($level->name) 
+                                            ? json_decode($level->name, true) 
+                                            : $level->name;
+                                        
+                                        $levelNameEn = is_array($levelData) ? ($levelData['en'] ?? '') : $levelData;
+                                        $levelNameAr = is_array($levelData) ? ($levelData['ar'] ?? '') : $levelData;
+                                    }
+                                @endphp
                                 <option value="{{ $level->id }}" {{ old('academic_level_id') == $level->id ? 'selected' : '' }}>
-                                    {{ $level->name['en'] ?? '' }} / {{ $level->name['ar'] ?? '' }}
+                                    {{ $levelNameEn }} / {{ $levelNameAr }}
                                 </option>
                             @endforeach
                         </select>
@@ -95,8 +109,22 @@
                                 required>
                             <option value="">Select Major</option>
                             @foreach($majors as $major)
+                                @php
+                                    // تحويل اسم التخصص من JSON إلى array إذا كان string
+                                    $majorNameEn = '';
+                                    $majorNameAr = '';
+                                    
+                                    if ($major->name) {
+                                        $majorData = is_string($major->name) 
+                                            ? json_decode($major->name, true) 
+                                            : $major->name;
+                                        
+                                        $majorNameEn = is_array($majorData) ? ($majorData['en'] ?? '') : $majorData;
+                                        $majorNameAr = is_array($majorData) ? ($majorData['ar'] ?? '') : $majorData;
+                                    }
+                                @endphp
                                 <option value="{{ $major->id }}" {{ old('major_id') == $major->id ? 'selected' : '' }}>
-                                    {{ $major->name['en'] ?? '' }} / {{ $major->name['ar'] ?? '' }}
+                                    {{ $majorNameEn }} / {{ $majorNameAr }}
                                 </option>
                             @endforeach
                         </select>

@@ -38,13 +38,26 @@
                         </thead>
                         <tbody>
                             @foreach($submissions as $submission)
+                                @php
+                                    // تحويل اسم التخصص من JSON إلى array إذا كان string
+                                    $majorName = 'N/A';
+                                    if ($submission->major && $submission->major->name) {
+                                        $majorData = is_string($submission->major->name) 
+                                            ? json_decode($submission->major->name, true) 
+                                            : $submission->major->name;
+                                        
+                                        $majorName = is_array($majorData) 
+                                            ? ($majorData['en'] ?? $majorData['ar'] ?? 'N/A') 
+                                            : $majorData;
+                                    }
+                                @endphp
                                 <tr>
                                     <td>{{ $submission->id }}</td>
                                     <td>{{ $submission->name }}</td>
                                     <td>{{ $submission->email }}</td>
                                     <td>{{ $submission->phone }}</td>
                                     <td>{{ $submission->job_title }}</td>
-                                    <td>{{ $submission->major->name['en'] ?? 'N/A' }}</td>
+                                    <td>{{ $majorName }}</td>
                                     <td>{{ $submission->years_experience }}</td>
                                     <td>
                                         @if($submission->status == 'pending')

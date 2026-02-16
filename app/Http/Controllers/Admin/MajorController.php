@@ -17,6 +17,9 @@ class MajorController extends Controller
     public function index()
     {
         //
+        // $majors = Major::with('academicLevel')->latest()->paginate(10);
+        // return view('admin.majors.index', compact('majors'));
+
         $majors = Major::with('academicLevel')->latest()->paginate(10);
         return view('admin.majors.index', compact('majors'));
     }

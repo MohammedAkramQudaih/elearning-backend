@@ -12,7 +12,7 @@
             </a>
         </div>
         <div class="card-body">
-            @if($students->isEmpty())
+            @if ($students->isEmpty())
                 <div class="alert alert-info">
                     No students found. <a href="{{ route('admin.students.create') }}">Add your first student</a>
                 </div>
@@ -32,28 +32,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($students as $student)
+                            @foreach ($students as $student)
                                 <tr>
                                     <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->phone }}</td>
                                     <td>
-                                        @if($student->academicLevel)
-                                            {{ $student->academicLevel->name['en'] ?? '' }}
+                                        @if ($student->academicLevel)
+                                            @php
+                                                $level = is_string($student->academicLevel->name)
+                                                    ? json_decode($student->academicLevel->name, true)
+                                                    : $student->academicLevel->name;
+                                            @endphp
+                                            {{ is_array($level) ? $level['en'] ?? '' : $level }}
                                         @else
                                             <span class="badge bg-secondary">N/A</span>
                                         @endif
                                     </td>
                                     <td>
-                                        @if($student->major)
-                                            {{ $student->major->name['en'] ?? '' }}
+                                        @if ($student->major)
+                                            @php
+                                                $major = is_string($student->major->name)
+                                                    ? json_decode($student->major->name, true)
+                                                    : $student->major->name;
+                                            @endphp
+                                            {{ is_array($major) ? $major['en'] ?? '' : $major }}
                                         @else
                                             <span class="badge bg-secondary">N/A</span>
                                         @endif
                                     </td>
                                     <td>
-                                        @if($student->status)
+                                        @if ($student->status)
                                             <span class="badge bg-success">Active</span>
                                         @else
                                             <span class="badge bg-danger">Inactive</span>
@@ -61,10 +71,13 @@
                                     </td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('admin.students.edit', $student) }}" class="btn btn-sm btn-warning" title="Edit">
+                                            <a href="{{ route('admin.students.edit', $student) }}"
+                                                class="btn btn-sm btn-warning" title="Edit">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form action="{{ route('admin.students.destroy', $student) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this student?');">
+                                            <form action="{{ route('admin.students.destroy', $student) }}" method="POST"
+                                                class="d-inline"
+                                                onsubmit="return confirm('Are you sure you want to delete this student?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" title="Delete">
@@ -78,7 +91,7 @@
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div class="mt-3">
                     {{ $students->links() }}
                 </div>

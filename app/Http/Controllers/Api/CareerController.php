@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CareerResource;
 use App\Models\CareerSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -51,13 +52,15 @@ class CareerController extends Controller
                 'cv_path' => $cvPath,
                 'status' => 'pending'
             ]);
-
+            $submission->load('major');
             return response()->json([
                 'success' => true,
-                'data' => [
-                    // 'id' => $submission->id,
-                    'submission' => $submission
-                ],
+                // 'data' => [
+                //     // 'id' => $submission->id,
+                //     // 'submission' => $submission
+                    
+                // ],
+                'data' => new CareerResource($submission),
                 'message' => 'Application submitted successfully'
             ], 201);
 
