@@ -5,11 +5,49 @@ Repository: https://github.com/MohammedAkramQudaih/elearning-backend
 ## About
 This repository contains the backend (Laravel) for an E-Learning admin panel. It provides user and role management, courses, categories, authentication, and seeders for initial data.
 
-## Features
-- User management with multiple roles (Admin, Team Leader, Project Manager, Employee, etc.)
-- Authentication and session management (Laravel Sanctum may be used)
-- Migrations and seeders for initial data
-- File storage linked to public for uploads
+## ✨ **Backend Features**
+
+### 🔐 **Authentication & Authorization**
+- ✅ User authentication using Laravel Breeze
+- ✅ Role-based access control (Admin, Editor, Viewer)
+- ✅ Session management with secure cookies
+- ✅ CSRF protection for all forms
+- ✅ Email verification (optional)
+
+### 👨‍💼 **Admin Panel Modules**
+- **Academic Levels Management** (CRUD with multilingual support - AR/EN)
+- **Majors Management** (CRUD with relationships to academic levels)
+- **Students Management** (Full CRUD with validation)
+- **Testimonials Management** (CRUD with image upload)
+- **News Management** (CRUD with image upload)
+- **Career Submissions Management** (View, filter by status, download CVs)
+
+### 🌐 **RESTful APIs**
+- 7+ public endpoints for frontend consumption
+- JSON responses with proper HTTP status codes (200, 201, 404, 422, 500)
+- API Resources for data transformation
+- CORS configured for cross-origin requests
+- API versioning (v1)
+
+### 🗄️ **Database Design**
+- 12+ tables with proper relationships (one-to-many, many-to-one)
+- Migrations for version control
+- Seeders for initial/test data
+- JSON columns for multilingual content (AR/EN)
+- Foreign key constraints for data integrity
+
+### 📁 **File Handling**
+- Image upload for testimonials and news (JPEG, PNG, JPG, GIF - max 2MB)
+- CV upload for career applications (PDF, DOC, DOCX - max 5MB)
+- Storage linked to public directory via `php artisan storage:link`
+- File validation (types, size, mime types)
+
+### ✅ **Validation & Error Handling**
+- Form request validation with custom rules
+- Custom error messages in both Arabic/English
+- Exception handling with proper logging
+- Proper HTTP responses (200, 201, 404, 422, 500)
+- Detailed error reporting in debug mode
 
 ## Requirements
 - PHP >= 8.0 (check composer.json for exact compatibility)
