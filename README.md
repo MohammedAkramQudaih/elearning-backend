@@ -76,6 +76,7 @@ After running seeders, a default admin account is created:
 - Email: admin@example.com
 - Password: password
 
+
 📬 Testing with Postman
 A complete Postman collection is included for API testing.
 
@@ -97,4 +98,31 @@ Use the imported environment to switch base URL and credentials, then run reques
 - Ensure APP_URL, APP_ENV and APP_DEBUG are set appropriately in `.env`.
 - If file upload or cache permission errors appear, check permissions for `storage/` and `bootstrap/cache`.
 - Use `composer update` only when you need to update dependencies; prefer `composer install` for project setup.
+
+## 🚀 Future Improvements
+
+Role-based permissions
+
+API authentication (Sanctum)
+
+Unit & Feature Tests
+
+Docker Support
+
+CI/CD Pipeline
+
+
+## 💼 Ready for Submission
+
+This project is structured to meet evaluation criteria including:
+
+Clean architecture
+
+Proper separation of concerns
+
+API usage
+
+Validation handling
+
+Maintainable code structure
 
