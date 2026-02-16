@@ -1,69 +1,94 @@
-<a href="https://github.com/MohammedAkramQudaih/elearning-backend"> <h1 align="center">E-Learning</h1></a>
+# E-Learning (Backend)
+
+Repository: https://github.com/MohammedAkramQudaih/elearning-backend
 
 ## About
+This repository contains the backend (Laravel) for an E-Learning admin panel. It provides user and role management, courses, categories, authentication, and seeders for initial data.
 
-<a name="installation"></a>
-## Installation
+## Features
+- User management with multiple roles (Admin, Team Leader, Project Manager, Employee, etc.)
+- Authentication and session management (Laravel Sanctum may be used)
+- Migrations and seeders for initial data
+- File storage linked to public for uploads
 
-> **Warning**
-> Make sure to follow the requirements first.
+## Requirements
+- PHP >= 8.0 (check composer.json for exact compatibility)
+- Composer
+- MySQL / MariaDB (or other supported DB)
+- Node.js + npm/yarn (if front-end assets are needed)
+- Git (for cloning)
 
-Here is how you can run the project locally:
-1. Clone this repo
-    ```sh
-    git clone https://github.com/MohammedAkramQudaih/elearning-backend.git
-    ```
+## Quick Setup (local)
+1. Clone the repository
+```sh
+git clone https://github.com/MohammedAkramQudaih/elearning-backend.git
+cd elearning-backend
+```
 
-1. Go into the project root directory
-    ```sh
-    cd elearning
-    ```
+2. Copy the example environment file
+- On Git Bash / WSL:
+```sh
+cp .env.example .env
+```
+- On Windows CMD:
+```bat
+copy .env.example .env
+```
 
-1. Copy .env.example file to .env file
-    ```sh
-    cp .env.example .env
-    ```
-1. Create database `elearning` (you can change database name)
+3. Create a database (example name: elearning) using your preferred tool.
 
-1. Go to `.env` file 
-    - set database credentials 
-        ```sh 
-        DB_DATABASE=elearning
-        DB_USERNAME=root
-        DB_PASSWORD=[YOUR PASSWORD]
-        ```
-    > Make sure to follow your database username and password
+4. Edit `.env` and set database credentials:
+```env
+DB_DATABASE=elearning
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
 
-1. Install PHP dependencies 
-    ```sh
-    composer update
-    ```
-1. Generate key 
-    ```sh
-    php artisan key:generate
-    ```
+5. Install PHP dependencies
+```sh
+composer install
+```
 
-1. Run migrations & seeders
-    ```
-    php artisan migrate:fresh --seed
-    ```
+6. Generate the application key
+```sh
+php artisan key:generate
+```
 
-1. Link the storage folder to public
-    ```
-    php artisan storage:link
-    ```
+7. Run migrations and seeders
+```sh
+php artisan migrate:fresh --seed
+```
 
-    this command will create users (CEO, Team Leader Of HR Team, Project Manager, Team Leader and Employee):
+8. Link storage to public
+```sh
+php artisan storage:link
+```
 
-    Admin
-     > email: admin@example.com , password: password
+9. Serve the application
+```sh
+php artisan serve
+```
 
-1. Run server 
-   
-    ```sh
-    php artisan serve
-    ```  
+10. Visit http://localhost:8000
 
-1. Visit [localhost:8000](http://localhost:8000) in your favorite browser.
+## Default seeded accounts
+After running seeders, a default admin account is created:
+- Email: admin@example.com
+- Password: password
 
-    > Make sure to follow your Laravel local Development Environment.
+## Testing
+Run the test suite with:
+```sh
+vendor/bin/phpunit
+```
+
+## Notes & Tips
+- Ensure APP_URL, APP_ENV and APP_DEBUG are set appropriately in `.env`.
+- If file upload or cache permission errors appear, check permissions for `storage/` and `bootstrap/cache`.
+- Use `composer update` only when you need to update dependencies; prefer `composer install` for project setup.
+
+## Contributing
+PRs and issues are welcome. Follow existing code conventions and add tests for new features.
+
+## License
+See the repository license file for details.
