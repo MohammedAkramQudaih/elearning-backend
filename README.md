@@ -76,7 +76,22 @@ After running seeders, a default admin account is created:
 - Email: admin@example.com
 - Password: password
 
+📬 Testing with Postman
+A complete Postman collection is included for API testing.
 
+Import the collection:
+```bash
+# In Postman, import:
+postman/E-Learning-API.postman_collection.json
+```
+
+Import the environment variables:
+```bash
+# In Postman, import:
+postman/E-Learning-Local.postman_environment.json
+```
+
+Use the imported environment to switch base URL and credentials, then run requests or collections as needed.
 
 ## Notes & Tips
 - Ensure APP_URL, APP_ENV and APP_DEBUG are set appropriately in `.env`.
