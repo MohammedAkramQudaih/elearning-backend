@@ -23,14 +23,14 @@ This repository contains the backend (Laravel) for an E-Learning admin panel. It
 - **Career Submissions Management** (View, filter by status, download CVs)
 
 ### 🌐 **RESTful APIs**
-- 7+ public endpoints for frontend consumption
+- public endpoints for frontend consumption
 - JSON responses with proper HTTP status codes (200, 201, 404, 422, 500)
 - API Resources for data transformation
 - CORS configured for cross-origin requests
 - API versioning (v1)
 
 ### 🗄️ **Database Design**
-- 12+ tables with proper relationships (one-to-many, many-to-one)
+- tables with proper relationships (one-to-many, many-to-one)
 - Migrations for version control
 - Seeders for initial/test data
 - JSON columns for multilingual content (AR/EN)
