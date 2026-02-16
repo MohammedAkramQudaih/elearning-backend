@@ -76,19 +76,10 @@ After running seeders, a default admin account is created:
 - Email: admin@example.com
 - Password: password
 
-## Testing
-Run the test suite with:
-```sh
-vendor/bin/phpunit
-```
+
 
 ## Notes & Tips
 - Ensure APP_URL, APP_ENV and APP_DEBUG are set appropriately in `.env`.
 - If file upload or cache permission errors appear, check permissions for `storage/` and `bootstrap/cache`.
 - Use `composer update` only when you need to update dependencies; prefer `composer install` for project setup.
 
-## Contributing
-PRs and issues are welcome. Follow existing code conventions and add tests for new features.
-
-## License
-See the repository license file for details.
