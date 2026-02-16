@@ -20,12 +20,12 @@ class updateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(Student $student): array
+    public function rules(): array
     {
         return [
             //
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:students,email,' . $student->id,
+            // 'email' => 'required|email|unique:students,email,' . $student->id,
             'phone' => 'required|string|max:20',
             'academic_level_id' => 'required|exists:academic_levels,id',
             'major_id' => 'required|exists:majors,id',

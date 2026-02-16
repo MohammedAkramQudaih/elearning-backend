@@ -85,13 +85,13 @@ class StudentController extends Controller
     public function update(updateRequest $request, Student $student)
     {
         // //
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|email|unique:students,email,' . $student->id,
-        //     'phone' => 'required|string|max:20',
-        //     'academic_level_id' => 'required|exists:academic_levels,id',
-        //     'major_id' => 'required|exists:majors,id',
-        // ]);
+        $request->validate([
+            // 'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:students,email,' . $student->id,
+            // 'phone' => 'required|string|max:20',
+            // 'academic_level_id' => 'required|exists:academic_levels,id',
+            // 'major_id' => 'required|exists:majors,id',
+        ]);
 
         $student->update([
             'name' => $request->name,
