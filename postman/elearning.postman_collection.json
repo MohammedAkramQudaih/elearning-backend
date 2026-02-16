@@ -1,0 +1,187 @@
+{
+  "info": {
+    "_postman_id": "d8389691-4688-46c9-a83e-e71b2252d0d3",
+    "name": "elearning",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "22889417",
+    "_collection_link": "https://go.postman.co/collection/22889417-d8389691-4688-46c9-a83e-e71b2252d0d3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Career Submissions",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "job_title",
+              "value": "co-teacher",
+              "type": "text",
+              "uuid": "070c830e-cb29-43af-a068-fe1f4c01ff48"
+            },
+            {
+              "key": "years_experience",
+              "value": "1",
+              "type": "text",
+              "uuid": "c090ecbc-07fe-4e08-b6c1-032f6d30a2f9"
+            },
+            {
+              "key": "major_id",
+              "value": "5",
+              "type": "text",
+              "uuid": "31cd64de-8481-451d-acc2-68609dfd562b"
+            },
+            {
+              "key": "name",
+              "value": "m.qq",
+              "type": "text",
+              "uuid": "ac53d76d-8ac2-43fa-a836-d18a99f61bd0"
+            },
+            {
+              "key": "phone",
+              "value": "0599026753",
+              "type": "text",
+              "uuid": "b68b545b-9655-4799-bd24-7c3ff8edbdb1"
+            },
+            {
+              "key": "email",
+              "value": "a@m.com",
+              "type": "text",
+              "uuid": "5c4590fa-acc1-45c6-b6bd-99d6e31730e3"
+            },
+            {
+              "key": "cv",
+              "type": "file",
+              "uuid": "ba362712-b88f-446c-9f86-068c6c797490",
+              "src": "postman-cloud:///1f10a605-2388-4510-886b-3f701a8d7cff"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{api_url}}/career/apply",
+          "host": [
+            "{{api_url}}"
+          ],
+          "path": [
+            "career",
+            "apply"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Home",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "{{api_url}}/home",
+          "host": [
+            "{{api_url}}"
+          ],
+          "path": [
+            "home"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Testimonial",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{api_url}}/testimonials",
+          "host": [
+            "{{api_url}}"
+          ],
+          "path": [
+            "testimonials"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "News",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{api_url}}/news",
+          "host": [
+            "{{api_url}}"
+          ],
+          "path": [
+            "news"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Majors",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{api_url}}/majors",
+          "host": [
+            "{{api_url}}"
+          ],
+          "path": [
+            "majors"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
