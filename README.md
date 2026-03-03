@@ -9,7 +9,7 @@ This repository contains the backend (Laravel) for an E-Learning admin panel. It
 
 ### 🔐 **Authentication & Authorization**
 - ✅ User authentication using Laravel Breeze
-- ✅ Role-based access control (Admin, Editor, Viewer)
+- ✅ Role-based access control (Admin,)
 - ✅ Session management with secure cookies
 - ✅ CSRF protection for all forms
 - ✅ Email verification (optional)

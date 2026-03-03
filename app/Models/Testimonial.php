@@ -10,7 +10,7 @@ class Testimonial extends Model
     //
     use HasFactory;
 
-    protected $fillable = ['name', 'position', 'content', 'image', 'status'];
+    protected $fillable = ['name', 'position', 'content', 'image', 'status', 'student_id'];
 
     protected $casts = [
         'position' => 'array',
@@ -22,4 +22,9 @@ class Testimonial extends Model
     {
         return $this->image ? asset('storage/' . $this->image) : null;
     }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }   
 }

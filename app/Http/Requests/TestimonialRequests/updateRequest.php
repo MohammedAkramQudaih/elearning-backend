@@ -23,6 +23,8 @@ class updateRequest extends FormRequest
     {
         return [
             //
+            'student_id' => 'sometimes|exists:students,id', // إضافة هذا السطر
+
             'name' => 'required|string|max:255',
             'position_ar' => 'required|string|max:255',
             'position_en' => 'required|string|max:255',

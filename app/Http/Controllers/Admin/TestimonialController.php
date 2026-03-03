@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TestimonialRequests\StoreRequest;
 use App\Http\Requests\TestimonialRequests\updateRequest;
+use App\Models\Student;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -27,8 +28,8 @@ class TestimonialController extends Controller
     public function create()
     {
         //
-        return view('admin.testimonials.create');
-
+        $students = Student::all();
+        return view('admin.testimonials.create', compact('students'));
     }
 
     /**
@@ -47,6 +48,7 @@ class TestimonialController extends Controller
         // ]);
 
         $data = [
+            'student_id' => $request->student_id, 
             'name' => $request->name,
             'position' => [
                 'ar' => $request->position_ar,
@@ -85,7 +87,8 @@ class TestimonialController extends Controller
     public function edit(Testimonial $testimonial)
     {
         //
-        return view('admin.testimonials.edit', compact('testimonial'));
+        $students = Student::all();
+        return view('admin.testimonials.edit', compact('testimonial', 'students'));
     }
 
     /**
@@ -104,6 +107,8 @@ class TestimonialController extends Controller
         // ]);
 
         $data = [
+            'student_id' => $request->student_id, 
+
             'name' => $request->name,
             'position' => [
                 'ar' => $request->position_ar,
@@ -122,7 +127,7 @@ class TestimonialController extends Controller
             if ($testimonial->image) {
                 Storage::disk('public')->delete($testimonial->image);
             }
-            
+
             $imagePath = $request->file('image')->store('testimonials', 'public');
             $data['image'] = $imagePath;
         }

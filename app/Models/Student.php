@@ -29,4 +29,9 @@ class Student extends Model
     {
         return $this->belongsTo(Major::class);
     }
+
+    public function testumonil()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

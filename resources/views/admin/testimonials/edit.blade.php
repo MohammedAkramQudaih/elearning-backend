@@ -12,119 +12,108 @@
             <form action="{{ route('admin.testimonials.update', $testimonial) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="name" class="form-label">
                             Person Name <span class="text-danger">*</span>
                         </label>
-                        <input type="text" 
-                               class="form-control @error('name') is-invalid @enderror" 
-                               id="name" 
-                               name="name" 
-                               value="{{ old('name', $testimonial->name) }}" 
-                               required>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                            name="name" value="{{ old('name', $testimonial->name) }}" required>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    
+
                     <div class="col-md-6 mb-3">
                         <label for="image" class="form-label">Profile Image</label>
-                        <input type="file" 
-                               class="form-control @error('image') is-invalid @enderror" 
-                               id="image" 
-                               name="image" 
-                               accept="image/*">
+                        <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
+                            name="image" accept="image/*">
                         @error('image')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                        
-                        @if($testimonial->image)
+
+                        @if ($testimonial->image)
                             <div class="mt-2">
                                 <p>Current Image:</p>
-                                <img src="{{ Storage::url($testimonial->image) }}" 
-                                     alt="{{ $testimonial->name }}"
-                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
+                                <img src="{{ Storage::url($testimonial->image) }}" alt="{{ $testimonial->name }}"
+                                    style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
                             </div>
                         @endif
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="position_en" class="form-label">
                             Position (English) <span class="text-danger">*</span>
                         </label>
-                        <input type="text" 
-                               class="form-control @error('position_en') is-invalid @enderror" 
-                               id="position_en" 
-                               name="position_en" 
-                               value="{{ old('position_en', $testimonial->position['en'] ?? '') }}" 
-                               required>
+                        <input type="text" class="form-control @error('position_en') is-invalid @enderror"
+                            id="position_en" name="position_en"
+                            value="{{ old('position_en', $testimonial->position['en'] ?? '') }}" required>
                         @error('position_en')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    
+
                     <div class="col-md-6 mb-3">
                         <label for="position_ar" class="form-label">
                             Position (Arabic) <span class="text-danger">*</span>
                         </label>
-                        <input type="text" 
-                               class="form-control @error('position_ar') is-invalid @enderror" 
-                               id="position_ar" 
-                               name="position_ar" 
-                               value="{{ old('position_ar', $testimonial->position['ar'] ?? '') }}" 
-                               required
-                               dir="rtl">
+                        <input type="text" class="form-control @error('position_ar') is-invalid @enderror"
+                            id="position_ar" name="position_ar"
+                            value="{{ old('position_ar', $testimonial->position['ar'] ?? '') }}" required dir="rtl">
                         @error('position_ar')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="content_en" class="form-label">
                             Testimonial Content (English) <span class="text-danger">*</span>
                         </label>
-                        <textarea class="form-control @error('content_en') is-invalid @enderror" 
-                                  id="content_en" 
-                                  name="content_en" 
-                                  rows="4" 
-                                  required>{{ old('content_en', $testimonial->content['en'] ?? '') }}</textarea>
+                        <textarea class="form-control @error('content_en') is-invalid @enderror" id="content_en" name="content_en"
+                            rows="4" required>{{ old('content_en', $testimonial->content['en'] ?? '') }}</textarea>
                         @error('content_en')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    
+
                     <div class="col-md-6 mb-3">
                         <label for="content_ar" class="form-label">
                             Testimonial Content (Arabic) <span class="text-danger">*</span>
                         </label>
-                        <textarea class="form-control @error('content_ar') is-invalid @enderror" 
-                                  id="content_ar" 
-                                  name="content_ar" 
-                                  rows="4" 
-                                  required
-                                  dir="rtl">{{ old('content_ar', $testimonial->content['ar'] ?? '') }}</textarea>
+                        <textarea class="form-control @error('content_ar') is-invalid @enderror" id="content_ar" name="content_ar"
+                            rows="4" required dir="rtl">{{ old('content_ar', $testimonial->content['ar'] ?? '') }}</textarea>
                         @error('content_ar')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
-                
+
                 <div class="mb-3">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="status" name="status" 
-                               {{ old('status', $testimonial->status) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" id="status" name="status"
+                            {{ old('status', $testimonial->status) ? 'checked' : '' }}>
                         <label class="form-check-label" for="status">Active</label>
                     </div>
                 </div>
-                
+                <div class="form-group">
+                    <label for="student_id">الطالب</label>
+                    <select name="student_id" id="student_id" class="form-control" required>
+                        <option value="">اختر طالباً</option>
+                        @foreach ($students as $student)
+                            <option value="{{ $student->id }}"
+                                {{ $testimonial->student_id == $student->id ? 'selected' : '' }}>
+                                {{ $student->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
                 <hr>
-                
+
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Update Testimonial
