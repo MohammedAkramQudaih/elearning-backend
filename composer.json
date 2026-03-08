@@ -87,10 +87,6 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "autoload": {
-        "files": [
-            "app/helpers.php"
-        ]
-    }
+    "prefer-stable": true
+   
 }

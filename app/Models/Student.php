@@ -30,8 +30,8 @@ class Student extends Model
         return $this->belongsTo(Major::class);
     }
 
-    public function testumonil()
+    public function testimonial()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Testimonial::class);
     }
 }
